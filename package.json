@@ -16,7 +16,7 @@
         "serve-favicon": "^2.4.2"
     },
     "scripts": {
-        "lint": "eslint src/app.js",
+        "lint": "eslint src/**/*.js",
         "dev": "nodemon --exec \"npm run lint && npm start\" --ignore public/js --ignore public/javascript --ignore public/javascripts",
         "start": "ENV=dev babel-node ./src/bin/www",
         "build": "babel src -d .dist",

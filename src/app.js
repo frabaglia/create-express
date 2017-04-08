@@ -5,7 +5,7 @@ import favicon from 'serve-favicon'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
-import babelEnvLogger from '../.internal-modules/env-logger'
+import babelEnvLogger from './utils/env-logger'
 import routes from './routes/index'
 
 /* This function is just a helper to let you know how is the server running without inspecting npm scripts. */

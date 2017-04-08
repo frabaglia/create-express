@@ -36,9 +36,9 @@ For production serve only, running real Node.
 
 # getting started
 
-If you want to start coding just run:
+If you want to start coding just clone this repo, get into and run:
 ```
-npm run dev
+yarn install && npm run dev
 ```
 
 And try to make a change on any file of /src folder. I suggest to get into /src/controllers/index.js to make a very fast and understandable change.

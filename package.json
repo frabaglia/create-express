@@ -1,0 +1,17 @@
+{
+  "name": "node-es6",
+  "version": "1.0.0",
+  "description": "Node.js ES6 starting seed. This is using Yarn as dependency manager, modules as body-parser and node-helmet, and some other common useful features as 404 and 500 generic request handlers.",
+  "main": "app.js",
+  "repository": "git@github.com:FrancooHM/node-es6.git",
+  "author": "Franco Rabaglia <francoo.hd@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.4.2"
+  }
+}

@@ -1,4 +1,4 @@
-# express-generator-last
+# 🐙 express-generator-last
 
 This module allows you to start using Node es-2015 and stage-0 features very quickly.
 

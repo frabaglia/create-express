@@ -39,7 +39,7 @@ For production serve only, running real Node.
 
 # getting started
 
-If you haven't installed <strong>yarn</strong> on your computer, you could easly do it reading [from here](https://yarnpkg.com/en/docs/install).
+If you haven't <strong>yarn</strong> on your computer, you could [easily do it](https://yarnpkg.com/en/docs/install).
 
 If you want to start coding just clone this repo, get into and run:
 ```

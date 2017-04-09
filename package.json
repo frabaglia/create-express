@@ -2,14 +2,26 @@
     "name": "create-express",
     "version": "1.0.0",
     "description": "Express templating cli application.",
-    "main": "app.js",
+    "main": ".dist/app.js",
     "repository": "git@github.com:FrancooHM/node-es6.git",
     "author": "Franco Rabaglia <francoo.hd@gmail.com>",
     "license": "MIT",
     "bin": {
-        "create-express": "./app.js"
+        "create-express": "./.dist/app.js"
+    },
+    "scripts": {
+        "dev": "nodemon --exec \"npm start\"",
+        "start": "ENV=dev babel-node ./src/app.js",
+        "build": "babel src -d .dist"
     },
     "dependencies": {
-        "ncp": "^2.0.0"
+        "babel-cli": "^6.24.1",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "chalk": "^1.1.3",
+        "child_process": "^1.0.2",
+        "commander": "^2.9.0",
+        "ncp": "^2.0.0",
+        "util": "^0.10.3"
     }
 }

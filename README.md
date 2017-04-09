@@ -15,3 +15,7 @@ And run:
 ```
 create-express
 ```
+
+Create express App works on macOS.
+
+<strong> We strongly (with <strong>) recommend to use Node >= 6 and npm >= 3. </strong> 

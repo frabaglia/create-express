@@ -11,27 +11,60 @@ var spinner = require("char-spinner")
 program
     .arguments('<serverName>')
     .action(function(serverName) {
-        startCopyWithServerName(serverName)
+        startProcess(serverName)
     })
     .parse(process.argv)
 
 
-function startCopyWithServerName(serverName) {
+function startProcess(serverName) {
     exec('mkdir ' + serverName + ' && pwd',
         function(error, stdout, stderr) {
 
-            stdout = stdout.substring(0, stdout.length - 1)
-
-            console.log(chalk.bold.green('🐙  express-create is creating a new server template on ' + stdout + '/' + serverName))
-            var interval = spinner()
             if (typeof error !== 'undefined' && error !== null) {
-                return errorHandler(error, interval)
+                return errorHandler(error, undefined)
             } else if (typeof stderr !== 'undefined' && stderr !== null && stderr !== '') {
-                return stdErrorHandler(error, interval)
-            } else {
-                return copyFiles(stdout, serverName, interval)
+                return stdErrorHandler(error, undefined)
             }
+
+            var to = stdout.substring(0, stdout.length - 1)
+
+            startCopy(to, serverName)
         })
+}
+
+function startCopy(to, serverName) {
+    console.log(chalk.bold.green('🐙  express-create is creating a new server template on ' + to + '/' + serverName))
+    var interval = spinner()
+    var isNVM = false
+    var from = ''
+
+    exec('echo $NVM_BIN', function(error, stdout, stderr) {
+
+        from = stdout.substring(0, stdout.length - 1)
+
+        if (typeof error !== 'undefined' && error !== null) {
+            return errorHandler(error, interval)
+        } else if (typeof stderr !== 'undefined' && stderr !== null && stderr !== '') {
+            return stdErrorHandler(error, interval)
+        } else {
+            if (typeof from !== 'undefined' && from !== null && from !== '') {
+                console.log('')
+                console.log(chalk.bold.cyan('We are detecting NVM enviroment on your computer.'))
+                console.log(chalk.bold.cyan('We are taking the template from the corresponding node modules...'))
+                isNVM = true from = from + "/../lib/node_modules/create-express/template/"
+            } else {
+                console.log('')
+                console.log(chalk.bold.cyan('We are detecting non NVM enviroment on your computer.'))
+                console.log(chalk.bold.cyan('We are taking the template from the corresponding node modules...'))
+                from = '/usr/local/lib/node_modules/create-express/template/'
+            }
+            if (isNVM) {
+                return copyFiles(from, to, serverName, interval)
+            } else {
+                return copyFiles(from, to, serverName, interval)
+            }
+        }
+    })
 }
 
 function errorHandler(error, interval) {
@@ -55,8 +88,8 @@ function ncpError(err, interval) {
     clearInterval(interval)
 }
 
-function copyFiles(stdout, serverName, interval) {
-    ncp('./template', stdout + '/' + serverName, function(err) {
+function copyFiles(from, to, serverName, interval) {
+    ncp(from, to + '/' + serverName, function(err) {
         if (err) {
             return ncpError(err)
         }

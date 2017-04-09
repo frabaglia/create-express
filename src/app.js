@@ -15,8 +15,8 @@ babelEnvLogger(process.env.ENV)
 let app = express()
 
 /* Template engine */
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
 
 /* Morgan logger */
 app.use(logger('dev'))
@@ -29,14 +29,14 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser())
 
 /* Statinc serving */
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '../public')))
 
 /* Main routing */
 app.use('/', routes)
 
 /* 404 handling */
 app.use((req, res, next) => {
-    let err = new Error('Not Found without templating.')
+    let err = new Error('Not found.')
     err.status = 404
     next(err)
 })

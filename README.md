@@ -2,7 +2,7 @@
 
 This module allows you to start using Node es-2015 and stage-0 features very quickly.
 
-It has some dev ops implemented on the npm package:
+It has typicall dev ops implemented on npm scripts:
 
 ### - lint : [babel-eslint](https://github.com/babel/babel-eslint)
 ```

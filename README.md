@@ -1,4 +1,4 @@
-# 🐙 express-generator-server
+# 🐙 create-express
 
 This module allows you to start using express with Node es-2015 and stage-0 features very quickly.
 

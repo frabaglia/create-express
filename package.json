@@ -1,5 +1,5 @@
 {
-    "name": "create-express-server",
+    "name": "create-express",
     "version": "1.0.0",
     "description": "Express templating cli application.",
     "main": "app.js",
@@ -7,7 +7,7 @@
     "author": "Franco Rabaglia <francoo.hd@gmail.com>",
     "license": "MIT",
     "bin": {
-        "create-express-server": "./app.js"
+        "create-express": "./app.js"
     },
     "dependencies": {
         "ncp": "^2.0.0"

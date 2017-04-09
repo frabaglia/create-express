@@ -22,7 +22,7 @@ function startCopyWithServerName(serverName) {
 
             stdout = stdout.substring(0, stdout.length - 1)
 
-            console.log(chalk.bold.green('🐙 express-create is creating a new server template on ' + stdout + '/' + serverName))
+            console.log(chalk.bold.green('🐙  express-create is creating a new server template on ' + stdout + '/' + serverName))
             var interval = spinner()
             if (typeof error !== 'undefined' && error !== null) {
                 return errorHandler(error, interval)

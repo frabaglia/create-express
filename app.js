@@ -51,7 +51,8 @@ function startCopy(to, serverName) {
                 console.log('')
                 console.log(chalk.bold.cyan('We are detecting NVM enviroment on your computer.'))
                 console.log(chalk.bold.cyan('We are taking the template from the corresponding node modules...'))
-                isNVM = true from = from + "/../lib/node_modules/create-express/template/"
+                isNVM = true
+                from = from + "/../lib/node_modules/create-express/template/"
             } else {
                 console.log('')
                 console.log(chalk.bold.cyan('We are detecting non NVM enviroment on your computer.'))

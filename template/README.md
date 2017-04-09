@@ -1,6 +1,6 @@
 # 🐙 express-generator-template
 
-This module allows you to start using Node es-2015 and stage-0 features very quickly.
+This module allows you to start using express with Node es-2015 and stage-0 features very quickly.
 
 It has some dev ops implemented on the npm package:
 

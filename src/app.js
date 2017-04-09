@@ -1,19 +1,16 @@
 #!/usr/bin/env node
 
 /* Only working on macOS, how could i handle it on Windows and Linux ? */
-
 var ncp = require('ncp').ncp
 var program = require('commander')
 var chalk = require('chalk')
 var sys = require('util')
 var exec = require('child_process').exec
-
-console.log(chalk.bold.green('express-create is working...'))
+var spinner = require("char-spinner")
 
 program
     .arguments('<serverName>')
     .action(function(serverName) {
-        console.log(chalk.bold.cyan('server name:', serverName))
         startCopyWithServerName(serverName)
     })
     .parse(process.argv)
@@ -25,39 +22,50 @@ function startCopyWithServerName(serverName) {
 
             stdout = stdout.substring(0, stdout.length - 1)
 
-            console.log('creating new express proyect on: ' + stdout + '/' + serverName)
+            console.log(chalk.bold.green('🐙 express-create is creating a new server template on ' + stdout + '/' + serverName))
+            var interval = spinner()
             if (typeof error !== 'undefined' && error !== null) {
-                return errorHandler(error)
+                return errorHandler(error, interval)
             } else if (typeof stderr !== 'undefined' && stderr !== null && stderr !== '') {
-                return stdErrorHandler(error)
+                return stdErrorHandler(error, interval)
             } else {
-                return copyFiles(stdout, serverName)
+                return copyFiles(stdout, serverName, interval)
             }
         })
 }
 
-function errorHandler(error) {
+function errorHandler(error, interval) {
+    console.log('')
     console.error(chalk.bold.red("node exec() error: "))
     console.error(chalk.red(error))
+    clearInterval(interval)
 }
 
-function stdErrorHandler(error) {
+function stdErrorHandler(error, interval) {
+    console.log('')
     console.error(chalk.bold.red("stderr error: "))
     console.error(chalk.red(stderr))
+    clearInterval(interval)
 }
 
-function ncpError(err) {
+function ncpError(err, interval) {
+    console.log('')
     console.error(chalk.bold.red("ncp error: "))
     console.error(chalk.red(err))
+    clearInterval(interval)
 }
 
-function copyFiles(stdout, serverName) {
+function copyFiles(stdout, serverName, interval) {
     ncp('./template', stdout + '/' + serverName, function(err) {
         if (err) {
             return ncpError(err)
         }
-        console.log(chalk.bold.green('express-create is ready!'))
-        console.log(chalk.bold.white('cd to your app and make:'))
-        console.log(chalk.bold.cyan('yarn install && npm run dev'))
+        clearInterval(interval)
+        console.log('')
+        console.log(chalk.bold.green('Your template is ready! 🍻 '))
+        console.log('')
+        console.log(chalk.bold.white('Start making some awsome things, to start coding just make:'))
+        console.log('')
+        console.log(chalk.bold.cyan('cd ' + serverName) + chalk.white(' && ') + chalk.bold.cyan('yarn install') + chalk.white(' && ') + chalk.bold.cyan('npm run dev'))
     })
 }

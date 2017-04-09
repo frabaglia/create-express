@@ -1,9 +1,9 @@
 {
     "name": "create-express-template",
     "version": "1.0.0",
-    "description": "Expresss ES6 starting seed.",
+    "description": "Expresss ES6 starting template.",
     "main": "app.js",
-    "repository": "git@github.com:FrancooHM/node-es6.git",
+    "repository": "git@github.com:FrancooHM/create-express.git",
     "author": "Franco Rabaglia <francoo.hd@gmail.com>",
     "license": "MIT",
     "dependencies": {

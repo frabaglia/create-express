@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Express templating cli application.",
     "main": "app.js",
-    "repository": "git@github.com:FrancooHM/node-es6.git",
+    "repository": "git@github.com:FrancooHM/create-express.git",
     "author": "Franco Rabaglia <francoo.hd@gmail.com>",
     "license": "MIT",
     "bin": {

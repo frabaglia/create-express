@@ -14,4 +14,4 @@ And run:
 create-express
 ```
 
-<strong> We strongly (with <strong>) recommend to use Node >= 6 and npm >= 3. </strong>
+<strong> Strongly recomended to use Node >= 6 and npm >= 3. </strong>

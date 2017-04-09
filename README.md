@@ -44,5 +44,5 @@ If you want to start coding just clone this repo, get into and run:
 yarn install && npm run dev
 ```
 
-Try to make a change on any file of /src folder. I suggest to get into /src/controllers/index.js to make a very fast and understandable change.
+Try to make a change on any file at /src folder. I suggest getting into /src/controllers/index.js to make a very fast and understandable change.
 If you haven't installed <strong>yarn</strong> on your computer, you could easly do it reading [from here](https://yarnpkg.com/en/docs/install). I highly recommend you to use this tool.

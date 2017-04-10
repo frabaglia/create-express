@@ -35,7 +35,6 @@ function startProcess(serverName) {
 function startCopy(to, serverName) {
     console.log(chalk.bold.green('🐙  express-create is creating a new server template on ' + to + '/' + serverName))
     var interval = spinner()
-    var isNVM = false
     var from = ''
 
     exec('echo $NVM_BIN', function(error, stdout, stderr) {
@@ -47,23 +46,7 @@ function startCopy(to, serverName) {
         } else if (typeof stderr !== 'undefined' && stderr !== null && stderr !== '') {
             return stdErrorHandler(error, interval)
         } else {
-            if (typeof from !== 'undefined' && from !== null && from !== '') {
-                console.log('')
-                console.log(chalk.bold.cyan('We are detecting NVM enviroment on your computer.'))
-                console.log(chalk.bold.cyan('We are taking the template from the corresponding node modules...'))
-                isNVM = true
-                from = from + "/../lib/node_modules/create-express/template/"
-            } else {
-                console.log('')
-                console.log(chalk.bold.cyan('We are detecting non NVM enviroment on your computer.'))
-                console.log(chalk.bold.cyan('We are taking the template from the corresponding node modules...'))
-                from = '/usr/local/lib/node_modules/create-express/template/'
-            }
-            if (isNVM) {
-                return copyFiles(from, to, serverName, interval)
-            } else {
-                return copyFiles(from, to, serverName, interval)
-            }
+            return copyFiles(from, to, serverName, interval)
         }
     })
 }
@@ -90,6 +73,25 @@ function ncpError(err, interval) {
 }
 
 function copyFiles(from, to, serverName, interval) {
+
+    if (typeof from !== 'undefined' && from !== null && from !== '') {
+        console.log('')
+        console.log(chalk.bold.cyan('Detecting NVM enviroment on your computer.'))
+        console.log(chalk.bold.cyan('Taking the template from the corresponding node modules...'))
+        from = from + "/../lib/node_modules/create-express/template/"
+    } else {
+        console.log('')
+        console.log(chalk.bold.cyan('Detecting non NVM enviroment on your computer.'))
+        console.log(chalk.bold.cyan('Taking the template from the corresponding node modules...'))
+        from = '/usr/local/lib/node_modules/create-express/template/'
+            //TODO: This is the only one?
+            // Could there be other paths for node_modules in a UNIX enviroment?
+            // Is enoghth for Linux users too?
+            //from = '/usr/local/node_modules/create-express/template/'
+            //from = '/usr/lib/node_modules/create-express/template/'
+            //from = '/usr/local/bin/create-express/template/'
+    }
+    
     ncp(from, to + '/' + serverName, function(err) {
         if (err) {
             return ncpError(err)

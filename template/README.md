@@ -4,7 +4,7 @@ This module allows you to start using express with Node es-2015 and stage-0 feat
 
 It has some dev ops implemented on the npm package:
 
-### - lint : [babel-standard](https://www.npmjs.com/package/babel-standard)
+### - lint : [babel-eslint](https://github.com/babel/babel-eslint)
 ```
 npm run lint
 ```

@@ -37,6 +37,24 @@ npm run serve
 ```
 For production serve only, running real Node.
 
+### - flow-init : [node](https://flow.org)
+```
+npm run flow-init
+```
+If you delete the current .flowconfig file, you can restart itself.
+
+### - flow-status : [node](https://flow.org)
+```
+npm run flow-status
+```
+Runs Flow analysis.
+
+### - flow-typed-install : [node](https://github.com/flowtype/flow-typed)
+```
+npm run flow-typed-install
+```
+Run this command if there is new third party dependency installed wich needs flow definitions.
+
 # getting started
 
 If you haven't <strong>yarn</strong> on your computer, you could [easily get it](https://yarnpkg.com/en/docs/install).

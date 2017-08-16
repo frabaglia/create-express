@@ -5,6 +5,8 @@ import favicon from 'serve-favicon'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import RateLimit from 'express-rate-limit'
+import helmet from 'helmet'
 import babelEnvLogger from './utils/env-logger'
 import routes from './routes/index'
 
@@ -13,6 +15,19 @@ import routes from './routes/index'
 babelEnvLogger(process.env.ENV)
 
 let app = express()
+
+/* Rate limiter */
+var limiter = new RateLimit({
+  windowMs: 1000, // 1 minute
+  max: 25, // Limit each IP to 100 requests per windowMs
+  delayMs: 0 // Disable delaying - Full speed until the max limit is reached
+})
+
+/* Applying rate limiter to all requests */
+app.use(limiter)
+
+/* Setting secure headers */
+app.use(helmet())
 
 /* Template engine */
 app.set('views', path.join(__dirname, 'views'))
